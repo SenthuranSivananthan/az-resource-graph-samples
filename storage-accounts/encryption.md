@@ -18,3 +18,9 @@ where type == "microsoft.storage/storageaccounts" and properties.encryption.serv
 where type == "microsoft.storage/storageaccounts" and properties.encryption.services.file.enabled == false
 | project subscriptionId, location, resourceGroup, name, kind
 ```
+## Without Service Endpoints
+
+```sql
+where type == "microsoft.storage/storageaccounts" and (properties.networkAcls.defaultAction == "allow" or array_length(properties.networkAcls.virtualNetworkRules) == 0)
+| project subscriptionId, resourceGroup, name, location
+```
