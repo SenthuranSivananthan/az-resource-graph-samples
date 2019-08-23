@@ -1,8 +1,7 @@
 ## All Public IP Addresses
 
 ```sql
-where type == "microsoft.network/publicipaddresses"
-| where notnull(properties.ipAddress)
+where type == "microsoft.network/publicipaddresses" and notnull(properties.ipAddress)
 | project subscriptionId, resourceGroup, name, location, properties.ipAddress
 ```
 ## Public IP Addresses attached to Virtual Machines
