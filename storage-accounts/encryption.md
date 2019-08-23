@@ -5,14 +5,14 @@ where type == "microsoft.storage/storageaccounts" and properties.supportsHttpsTr
 | project subscriptionId, location, resourceGroup, name, kind
 ```
 
-## Storage accounts with unencrypted at rest - blobs
+## Storage accounts with unencrypted data at rest - blobs
 
 ```sql
 where type == "microsoft.storage/storageaccounts" and properties.encryption.services.blob.enabled == false
 | project subscriptionId, location, resourceGroup, name, kind
 ```
 
-## Storage accounts with unencrypted at rest - files
+## Storage accounts with unencrypted data at rest - files
 
 ```sql
 where type == "microsoft.storage/storageaccounts" and properties.encryption.services.file.enabled == false
