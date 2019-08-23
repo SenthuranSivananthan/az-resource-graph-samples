@@ -24,3 +24,9 @@ where type == "microsoft.storage/storageaccounts" and properties.encryption.serv
 where type == "microsoft.storage/storageaccounts" and (properties.networkAcls.defaultAction == "allow" or array_length(properties.networkAcls.virtualNetworkRules) == 0)
 | project subscriptionId, resourceGroup, name, location
 ```
+## With whitelist IPs
+
+```sql
+where type == "microsoft.storage/storageaccounts" and array_length(properties.networkAcls.ipRules) > 0
+| project subscriptionId, resourceGroup, name, location, ipRules = properties.networkAcls.ipRules
+```
