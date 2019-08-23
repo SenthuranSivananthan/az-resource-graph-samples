@@ -1,4 +1,4 @@
-## Virtual Machines with IP Forward enabled on the network interfaces
+## Virtual Machines with IP Forwarding enabled on the network interfaces
 
 ```
 where type == "microsoft.network/networkinterfaces"
