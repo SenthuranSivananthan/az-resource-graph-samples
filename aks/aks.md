@@ -1,17 +1,18 @@
 ## List of AKS clusters
 
 ```sql
-where type =~ "microsoft.containerservice/managedclusters"
+where type == "microsoft.containerservice/managedclusters"
 | project
 	subscriptionId,
 	resourceGroup,
 	name,
-	properties.kubernetesVersion,
-	properties.fqdn,
-	properties.dnsPrefix,
-	properties.servicePrincipalProfile.clientId,
-	properties.enableRBAC,
-	properties.aadProfile.serverAppID,
-	properties.aadProfile.clientAppID,
-	properties.aadProfile.tenantID
+	networkPolicy = properties.networkProfile.networkPolicy,
+	k8sversion = properties.kubernetesVersion,
+	fqdn=properties.fqdn,
+	dnsPrefix = properties.dnsPrefix,
+	spnClientId = properties.servicePrincipalProfile.clientId,
+	rbac = properties.enableRBAC,
+	aadServerAppId = properties.aadProfile.serverAppID,
+	aadClientAppId = properties.aadProfile.clientAppID,
+	aadTenantId = properties.aadProfile.tenantID
 ```
