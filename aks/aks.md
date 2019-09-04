@@ -1,7 +1,7 @@
 ## List of AKS clusters
 
 ```sql
-where type == "microsoft.containerservice/managedclusters"
+where type =~ "microsoft.containerservice/managedclusters"
 | project
 	subscriptionId,
 	resourceGroup,
