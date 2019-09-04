@@ -6,6 +6,8 @@ where type == "microsoft.network/publicipaddresses" and notnull(properties.ipAdd
 ```
 ## Public IP Addresses attached to Virtual Machines
 
+Requirements: [PowerShell](https://docs.microsoft.com/en-us/azure/governance/resource-graph/first-query-powershell)
+
 ```powershell
 $rgQuery = "where type == 'microsoft.network/networkinterfaces' and properties.virtualMachine.id != ''"
 $results = Search-AzGraph -Query $rgQuery
