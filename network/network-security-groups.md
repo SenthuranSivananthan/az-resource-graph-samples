@@ -1,5 +1,11 @@
 ## Subnets without Network Security Groups
 
+A network security group contains security rules that allow or deny inbound network traffic to, or outbound network traffic from, several types of Azure resources.
+
+Azure Reference: [How traffic is evaluated](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#how-traffic-is-evaluated)
+
+Requirements: [PowerShell](https://docs.microsoft.com/en-us/azure/governance/resource-graph/first-query-powershell)
+
 ```powershell
 $rgQuery = "where type == 'microsoft.network/virtualnetworks' | summarize subnets = make_list(properties.subnets)"
 $results = Search-AzGraph -Query $rgQuery
