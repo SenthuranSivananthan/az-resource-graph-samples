@@ -8,7 +8,7 @@ where type == "microsoft.containerservice/managedclusters"
 	name,
 	networkPolicy = properties.networkProfile.networkPolicy,
 	k8sversion = properties.kubernetesVersion,
-	fqdn=properties.fqdn,
+	fqdn = properties.fqdn,
 	dnsPrefix = properties.dnsPrefix,
 	spnClientId = properties.servicePrincipalProfile.clientId,
 	rbac = properties.enableRBAC,
