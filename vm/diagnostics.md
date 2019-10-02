@@ -18,8 +18,8 @@ where type == "microsoft.compute/virtualmachines"
 ```sql
 where type == "microsoft.compute/virtualmachines"
 | where notnull(properties.diagnosticsProfile.bootDiagnostics.storageUri)
-| project name, subscriptionId, bootDiagStorageAccount=properties.diagnosticsProfile.bootDiagnostics.storageUri
-| summarize vmList=make_set(name) by subscriptionId, tostring(bootDiagStorageAccount)
-| project subscriptionId, tostring(bootDiagStorageAccount), vmCount=array_length(vmList), vmList
+| project subscriptionId, location, resourceGroup, name, bootDiagStorageAccount=properties.diagnosticsProfile.bootDiagnostics.storageUri
+| summarize vmList=make_set(name) by subscriptionId, location, resourceGroup, tostring(bootDiagStorageAccount)
+| project subscriptionId, location, resourceGroup, tostring(bootDiagStorageAccount), vmCount=array_length(vmList), vmList
 | order by vmCount asc
 ```
