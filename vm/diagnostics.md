@@ -13,3 +13,11 @@ where type == "microsoft.compute/virtualmachines"
 | project name, bootDiagStorageAccount=properties.diagnosticsProfile.bootDiagnostics.storageUri
 | summarize count() by tostring(bootDiagStorageAccount)
 ```
+## List all VMs used by each storage account
+
+```sql
+where type == "microsoft.compute/virtualmachines"
+| where notnull(properties.diagnosticsProfile.bootDiagnostics.storageUri)
+| project name, subscriptionId, bootDiagStorageAccount=properties.diagnosticsProfile.bootDiagnostics.storageUri
+| summarize vmList=make_set(name) by subscriptionId, tostring(bootDiagStorageAccount)
+```
